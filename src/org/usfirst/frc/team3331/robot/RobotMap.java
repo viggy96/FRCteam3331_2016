@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3331.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
@@ -23,4 +24,7 @@ public class RobotMap {
     public static final int leftStickY = 1;
     public static final int rightStickX = 4;
     public static final int rightStickY = 5;
+    
+    public static final DoubleSolenoid bottomPiston = new DoubleSolenoid(0, 1);
+    public static final DoubleSolenoid topPiston = new DoubleSolenoid(2, 3);
 }
