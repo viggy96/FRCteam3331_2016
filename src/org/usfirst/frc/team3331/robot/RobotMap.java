@@ -27,4 +27,7 @@ public class RobotMap {
     
     public static final DoubleSolenoid bottomPiston = new DoubleSolenoid(0, 1);
     public static final DoubleSolenoid topPiston = new DoubleSolenoid(2, 3);
+    
+    public static final Talon shooterMotorLeft = new Talon(4);
+    public static final Talon shooterMotorRight = new Talon(5);
 }

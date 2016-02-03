@@ -30,8 +30,10 @@ public class DriveSubsystem extends Subsystem {
     }
     
     private double[] normaliseAxes() {
-    	double left = Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), NORMALISE_POW);
-    	double right = Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.rightStickY), NORMALISE_POW);
+    	double left = Math.copySign(Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), NORMALISE_POW),
+    			RobotMap.gamepad.getRawAxis(RobotMap.leftStickY));
+    	double right = Math.copySign(Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.rightStickY), NORMALISE_POW),
+    			RobotMap.gamepad.getRawAxis(RobotMap.rightStickY));
     	
     	double output[] = {left, right};
     	return output;
