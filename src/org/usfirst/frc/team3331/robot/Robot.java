@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3331.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team3331.robot.subsystems.PneumaticSubsystem;
+import org.usfirst.frc.team3331.robot.subsystems.ArmSubsystem;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
-	public static final PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem();
+	public static final ArmSubsystem armSubsystem = new ArmSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 		driveSubsystem.init();
-		pneumaticSubsystem.init();
+		armSubsystem.init();
 		
         chooser = new SendableChooser();
 //        chooser.addDefault("Default Auto", new ExampleCommand());

@@ -2,30 +2,33 @@ package org.usfirst.frc.team3331.robot.commands;
 
 import org.usfirst.frc.team3331.robot.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class teleopDriveCommand extends Command {
-
-    public teleopDriveCommand() {
-        requires(Robot.driveSubsystem);
+public class UpperArmDownCommand extends Command {
+	DoubleSolenoid.Value position = DoubleSolenoid.Value.kReverse;
+	
+    public UpperArmDownCommand() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.armSubsystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveSubsystem.init();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.teleopDrive();
+    	Robot.armSubsystem.setTopPiston(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (Robot.armSubsystem.getTopPiston() == position);
     }
 
     // Called once after isFinished returns true

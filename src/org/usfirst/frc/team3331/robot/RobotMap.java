@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3331.robot;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -30,4 +32,10 @@ public class RobotMap {
     
     public static final Talon shooterMotorLeft = new Talon(4);
     public static final Talon shooterMotorRight = new Talon(5);
+    
+    public static final DigitalInput lowerArmSwitch = new DigitalInput(0);
+    public static final DigitalInput upperArmFoldedSwitch = new DigitalInput(1);
+    public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+    
+    public static boolean armFoldState = false;
 }

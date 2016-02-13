@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3331.robot.subsystems;
 
 import org.usfirst.frc.team3331.robot.RobotMap;
-import org.usfirst.frc.team3331.robot.commands.teleopDriveCommand;
+import org.usfirst.frc.team3331.robot.commands.TeleopDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,13 +15,15 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
-       setDefaultCommand(new teleopDriveCommand());
+       setDefaultCommand(new TeleopDriveCommand());
     }
     
     public void init() {
-    	RobotMap.drivetrain.setLeftRightMotorOutputs(0, 0);
     	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
     	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+    	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+    	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+    	RobotMap.drivetrain.setLeftRightMotorOutputs(0, 0);
     }
     
     public void teleopDrive() {

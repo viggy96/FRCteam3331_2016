@@ -8,10 +8,14 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 /**
  *
  */
-public class PneumaticSubsystem extends Subsystem {
+public class ArmSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	public enum Action {
+		FOLD, UNFOLD;
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -27,6 +31,10 @@ public class PneumaticSubsystem extends Subsystem {
     	RobotMap.bottomPiston.set(position);
     }
     
+    public void lockBottomPiston() {
+    	RobotMap.bottomPiston.set(DoubleSolenoid.Value.kOff);
+    }
+    
     public DoubleSolenoid.Value getBottomPiston() {
     	return RobotMap.bottomPiston.get();
     }
@@ -35,8 +43,28 @@ public class PneumaticSubsystem extends Subsystem {
     	RobotMap.topPiston.set(position);
     }
     
+    public void lockTopPiston() {
+    	RobotMap.topPiston.set(DoubleSolenoid.Value.kOff);
+    }
+    
     public DoubleSolenoid.Value getTopPiston() {
     	return RobotMap.topPiston.get();
+    }
+    
+    public boolean isFolded() {
+    	return RobotMap.upperArmFoldedSwitch.get();
+    }
+    
+    public boolean isLowerArmUp() {
+    	return RobotMap.lowerArmSwitch.get();
+    }
+    
+    public void calibrateArm() {
+    	RobotMap.gyro.calibrate();
+    }
+    
+    public double getArmAngle() {
+    	return RobotMap.gyro.getAngle(); 
     }
 }
 

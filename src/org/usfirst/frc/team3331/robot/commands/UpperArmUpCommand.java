@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class topPistonUp extends Command {
+public class UpperArmUpCommand extends Command {
 	DoubleSolenoid.Value position = DoubleSolenoid.Value.kForward;
 	
-    public topPistonUp() {
+    public UpperArmUpCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.pneumaticSubsystem);
+    	requires(Robot.armSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -23,12 +23,12 @@ public class topPistonUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pneumaticSubsystem.setTopPiston(position);
+    	Robot.armSubsystem.setTopPiston(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.pneumaticSubsystem.getTopPiston() == position);
+        return (Robot.armSubsystem.getTopPiston() == position);
     }
 
     // Called once after isFinished returns true
