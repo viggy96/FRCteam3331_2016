@@ -37,8 +37,16 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
+	Button button1 = new JoystickButton(RobotMap.gamepad, 1),
+			button2 = new JoystickButton(RobotMap.gamepad, 2),
+			button3 = new JoystickButton(RobotMap.gamepad, 3),
+			button4 = new JoystickButton(RobotMap.gamepad, 4);
+	
 	public OI() {
-		
+		button1.whenPressed(new LowerArmUpCommand());
+		button2.whenPressed(new UpperArmUpCommand());
+		button3.whenPressed(new LowerArmDownCommand());
+		button4.whenPressed(new UpperArmDownCommand());
 	}
 }
 
