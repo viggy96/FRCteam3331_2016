@@ -23,32 +23,38 @@ public class ArmSubsystem extends Subsystem {
     }
     
     public void init() {
-    	RobotMap.topPiston.set(DoubleSolenoid.Value.kOff);
-    	RobotMap.bottomPiston.set(DoubleSolenoid.Value.kOff);
+    	RobotMap.topPistonForward.set(false);
+    	RobotMap.topPistonReverse.set(false);
+    	RobotMap.bottomPistonForward.set(false);
+    	RobotMap.bottomPistonReverse.set(false);
     }
     
-    public void setBottomPiston(DoubleSolenoid.Value position) {
-    	RobotMap.bottomPiston.set(position);
+    public void setBottomPiston(boolean forward) {
+    	RobotMap.bottomPistonForward.set(forward);
+    	RobotMap.bottomPistonReverse.set(!forward);
     }
     
     public void lockBottomPiston() {
-    	RobotMap.bottomPiston.set(DoubleSolenoid.Value.kOff);
+    	RobotMap.bottomPistonForward.set(false);
+    	RobotMap.bottomPistonReverse.set(false);
     }
     
-    public DoubleSolenoid.Value getBottomPiston() {
-    	return RobotMap.bottomPiston.get();
+    public boolean getBottomPiston() {
+    	return RobotMap.bottomPistonForward.get();
     }
     
-    public void setTopPiston(DoubleSolenoid.Value position) {
-    	RobotMap.topPiston.set(position);
+    public void setTopPiston(boolean forward) {
+    	RobotMap.topPistonForward.set(forward);
+    	RobotMap.topPistonReverse.set(!forward);
     }
     
     public void lockTopPiston() {
-    	RobotMap.topPiston.set(DoubleSolenoid.Value.kOff);
+    	RobotMap.topPistonForward.set(false);
+    	RobotMap.topPistonReverse.set(false);
     }
     
-    public DoubleSolenoid.Value getTopPiston() {
-    	return RobotMap.topPiston.get();
+    public boolean getTopPiston() {
+    	return RobotMap.topPistonForward.get();
     }
     
     public boolean isFolded() {

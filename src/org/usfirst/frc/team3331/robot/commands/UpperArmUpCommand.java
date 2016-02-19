@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class UpperArmUpCommand extends Command {
-	DoubleSolenoid.Value position = DoubleSolenoid.Value.kForward;
+	boolean position = true;
 	
     public UpperArmUpCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -38,5 +38,6 @@ public class UpperArmUpCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.armSubsystem.lockTopPiston();
     }
 }

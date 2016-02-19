@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	RobotMap.init();
 		oi = new OI();
 		driveSubsystem.init();
 		armSubsystem.init();

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 
 /**
@@ -27,8 +28,10 @@ public class RobotMap {
     public static final int rightStickX = 4;
     public static final int rightStickY = 5;
     
-    public static final DoubleSolenoid bottomPiston = new DoubleSolenoid(0, 1);
-    public static final DoubleSolenoid topPiston = new DoubleSolenoid(2, 3);
+    public static final Solenoid bottomPistonForward = new Solenoid(0);
+    public static final Solenoid bottomPistonReverse = new Solenoid(1);
+    public static final Solenoid topPistonForward = new Solenoid(2);
+    public static final Solenoid topPistonReverse = new Solenoid(3);
     
     public static final Talon shooterMotorLeft = new Talon(4);
     public static final Talon shooterMotorRight = new Talon(5);
@@ -38,4 +41,11 @@ public class RobotMap {
     public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     
     public static boolean armFoldState = false;
+    
+    public static void init() {
+    	frontLeftMotor.enableDeadbandElimination(true);
+    	frontRightMotor.enableDeadbandElimination(true);
+    	rearLeftMotor.enableDeadbandElimination(true);
+    	rearRightMotor.enableDeadbandElimination(true);
+    }
 }

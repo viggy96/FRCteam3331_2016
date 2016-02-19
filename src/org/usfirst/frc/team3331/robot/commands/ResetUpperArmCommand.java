@@ -24,8 +24,8 @@ public class ResetUpperArmCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = Robot.armSubsystem.getArmAngle();
-    	if (angle < -0.125) Robot.armSubsystem.setTopPiston(DoubleSolenoid.Value.kForward);
-    	else if (angle > 0.125) Robot.armSubsystem.setTopPiston(DoubleSolenoid.Value.kReverse);
+    	if (angle < -0.125) Robot.armSubsystem.setTopPiston(true);
+    	else if (angle > 0.125) Robot.armSubsystem.setTopPiston(false);
     	else { 
     		Robot.armSubsystem.lockTopPiston();
     		isLevel = true;

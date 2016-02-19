@@ -43,10 +43,10 @@ public class OI {
 			button4 = new JoystickButton(RobotMap.gamepad, 4);
 	
 	public OI() {
-		button1.whenPressed(new LowerArmUpCommand());
-		button2.whenPressed(new UpperArmUpCommand());
-		button3.whenPressed(new LowerArmDownCommand());
-		button4.whenPressed(new UpperArmDownCommand());
+		button1.whileHeld(new LowerArmUpCommand());
+		button2.whileHeld(new UpperArmUpCommand());
+		button3.whileHeld(new LowerArmDownCommand());
+		button4.whileHeld(new UpperArmDownCommand());
 	}
 }
 

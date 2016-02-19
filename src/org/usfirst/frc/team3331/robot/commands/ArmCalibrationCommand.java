@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmCalibrationCommand extends Command {
-	DoubleSolenoid.Value position = DoubleSolenoid.Value.kReverse;
+	boolean position = false;
 	
     public ArmCalibrationCommand() {
         // Use requires() here to declare subsystem dependencies
