@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3331.robot.subsystems;
 
 import org.usfirst.frc.team3331.robot.RobotMap;
+import org.usfirst.frc.team3331.robot.commands.LockArmCommand;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -19,7 +20,7 @@ public class ArmSubsystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new LockArmCommand());
     }
     
     public void init() {
