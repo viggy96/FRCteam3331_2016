@@ -1,6 +1,8 @@
 package org.usfirst.frc.team3331.robot;
 
 import org.usfirst.frc.team3331.robot.commands.*;
+import org.usfirst.frc.team3331.robot.triggers.ArmDownButton;
+import org.usfirst.frc.team3331.robot.triggers.ArmUpButton;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -40,13 +42,17 @@ public class OI {
 	Button button1 = new JoystickButton(RobotMap.gamepad, 1),
 			button2 = new JoystickButton(RobotMap.gamepad, 2),
 			button3 = new JoystickButton(RobotMap.gamepad, 3),
-			button4 = new JoystickButton(RobotMap.gamepad, 4);
+			button4 = new JoystickButton(RobotMap.gamepad, 4),
+			leftTrigger = new ArmDownButton(),
+			rightTrigger = new ArmUpButton();
 	
 	public OI() {
 		button1.whileHeld(new LowerArmUpCommand());
 		button2.whileHeld(new UpperArmUpCommand());
 		button3.whileHeld(new LowerArmDownCommand());
 		button4.whileHeld(new UpperArmDownCommand());
+		//leftTrigger.whileHeld(new UpperArmDownCommand());
+		//rightTrigger.whileHeld(new UpperArmUpCommand());
 	}
 }
 
