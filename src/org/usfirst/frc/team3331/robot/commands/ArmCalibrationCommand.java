@@ -23,12 +23,12 @@ public class ArmCalibrationCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.armSubsystem.setTopPiston(position);
+    	Robot.armSubsystem.setBottomPiston(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.armSubsystem.getTopPiston() == position);
+        return Robot.armSubsystem.isLowerArmDown();
     }
 
     // Called once after isFinished returns true

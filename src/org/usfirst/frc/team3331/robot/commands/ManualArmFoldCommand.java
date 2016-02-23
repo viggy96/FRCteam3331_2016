@@ -2,16 +2,14 @@ package org.usfirst.frc.team3331.robot.commands;
 
 import org.usfirst.frc.team3331.robot.Robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LowerArmUpCommand extends Command {
-	boolean position = true;
-	
-    public LowerArmUpCommand() {
+public class ManualArmFoldCommand extends Command {
+
+    public ManualArmFoldCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSubsystem);
@@ -23,12 +21,13 @@ public class LowerArmUpCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.armSubsystem.setBottomPiston(position);
+    	Robot.armSubsystem.setTopPiston(false);
+    	Robot.armSubsystem.setBottomPiston(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.armSubsystem.isLowerArmUp();
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -38,6 +37,7 @@ public class LowerArmUpCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.armSubsystem.lockTopPiston();
     	Robot.armSubsystem.lockBottomPiston();
     }
 }

@@ -39,20 +39,20 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
-	Button button1 = new JoystickButton(RobotMap.gamepad, 1),
-			button2 = new JoystickButton(RobotMap.gamepad, 2),
-			button3 = new JoystickButton(RobotMap.gamepad, 3),
-			button4 = new JoystickButton(RobotMap.gamepad, 4),
+	Button a = new JoystickButton(RobotMap.gamepad, 1),
+			b = new JoystickButton(RobotMap.gamepad, 2),
+			x = new JoystickButton(RobotMap.gamepad, 3),
+			y = new JoystickButton(RobotMap.gamepad, 4),
 			leftTrigger = new ArmDownButton(),
 			rightTrigger = new ArmUpButton();
 	
 	public OI() {
-		button1.whileHeld(new LowerArmUpCommand());
-		button2.whileHeld(new UpperArmUpCommand());
-		button3.whileHeld(new LowerArmDownCommand());
-		button4.whileHeld(new UpperArmDownCommand());
-		//leftTrigger.whileHeld(new UpperArmDownCommand());
-		//rightTrigger.whileHeld(new UpperArmUpCommand());
+		a.whenPressed(new UnfoldArmCommandGroup());
+		b.whenPressed(new FoldArmCommandGroup());
+		x.whenPressed(new HookPistonToggleCommand());
+		y.whileHeld(new ManualArmFoldCommand());
+		leftTrigger.whileHeld(new UpperArmDownCommand());
+		rightTrigger.whileHeld(new UpperArmUpCommand());
 	}
 }
 

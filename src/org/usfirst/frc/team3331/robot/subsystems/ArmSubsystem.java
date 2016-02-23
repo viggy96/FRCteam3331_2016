@@ -28,6 +28,7 @@ public class ArmSubsystem extends Subsystem {
     	RobotMap.topPistonReverse.set(false);
     	RobotMap.bottomPistonForward.set(false);
     	RobotMap.bottomPistonReverse.set(false);
+    	RobotMap.hookPiston.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void setBottomPiston(boolean forward) {
@@ -58,12 +59,24 @@ public class ArmSubsystem extends Subsystem {
     	return RobotMap.topPistonForward.get();
     }
     
+    public void setHookPiston(DoubleSolenoid.Value position) {
+    	RobotMap.hookPiston.set(position);
+    }
+    
+    public DoubleSolenoid.Value getHookPiston() {
+    	return RobotMap.hookPiston.get();
+    }
+    
     public boolean isFolded() {
     	return RobotMap.upperArmFoldedSwitch.get();
     }
     
     public boolean isLowerArmUp() {
-    	return RobotMap.lowerArmSwitch.get();
+    	return RobotMap.lowerArmUpSwitch.get();
+    }
+    
+    public boolean isLowerArmDown() {
+    	return RobotMap.lowerArmDownSwitch.get();
     }
     
     public void calibrateArm() {

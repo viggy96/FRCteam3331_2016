@@ -12,5 +12,4 @@ public class ArmDownButton extends Button {
     public boolean get() {
         return (!RobotMap.armFoldState && RobotMap.gamepad.getRawButton(5));
     }
-    
 }

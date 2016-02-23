@@ -28,7 +28,7 @@ public class LowerArmDownCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.armSubsystem.getBottomPiston() == position);
+        return Robot.armSubsystem.isLowerArmDown();
     }
 
     // Called once after isFinished returns true

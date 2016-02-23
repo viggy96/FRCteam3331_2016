@@ -27,8 +27,8 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void teleopDrive() {
-    	double axes[] = normaliseAxes();
-    	RobotMap.drivetrain.tankDrive(axes[0], axes[1]);
+    	//double axes[] = normaliseAxes();
+    	RobotMap.drivetrain.tankDrive(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), RobotMap.gamepad.getRawAxis(RobotMap.rightStickY));
     }
     
     private double[] normaliseAxes() {

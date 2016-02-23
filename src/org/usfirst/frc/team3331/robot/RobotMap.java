@@ -33,14 +33,18 @@ public class RobotMap {
     public static final Solenoid topPistonForward = new Solenoid(2);
     public static final Solenoid topPistonReverse = new Solenoid(3);
     
+    public static final DoubleSolenoid hookPiston = new DoubleSolenoid(4, 5);
+    
     public static final Talon shooterMotorLeft = new Talon(4);
     public static final Talon shooterMotorRight = new Talon(5);
     
-    public static final DigitalInput lowerArmSwitch = new DigitalInput(0);
-    public static final DigitalInput upperArmFoldedSwitch = new DigitalInput(1);
+    public static final DigitalInput lowerArmUpSwitch = new DigitalInput(0);
+    public static final DigitalInput lowerArmDownSwitch = new DigitalInput(1);
+    public static final DigitalInput upperArmFoldedSwitch = new DigitalInput(2);
     public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     
     public static boolean armFoldState = false;
+    public static boolean hookState = false;
     
     public static void init() {
     	frontLeftMotor.enableDeadbandElimination(true);
