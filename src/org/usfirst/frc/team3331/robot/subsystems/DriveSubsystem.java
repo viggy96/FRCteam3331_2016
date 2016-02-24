@@ -26,9 +26,17 @@ public class DriveSubsystem extends Subsystem {
     	RobotMap.drivetrain.setLeftRightMotorOutputs(0, 0);
     }
     
+    public void stopDrive() {
+    	RobotMap.drivetrain.tankDrive(0, 0);
+    }
+    
     public void teleopDrive() {
     	//double axes[] = normaliseAxes();
     	RobotMap.drivetrain.tankDrive(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), RobotMap.gamepad.getRawAxis(RobotMap.rightStickY));
+    }
+    
+    public void autoDrive(double leftValue, double rightValue) {
+    	RobotMap.drivetrain.tankDrive(leftValue, rightValue);
     }
     
     private double[] normaliseAxes() {
