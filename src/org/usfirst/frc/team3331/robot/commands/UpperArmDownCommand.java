@@ -1,0 +1,48 @@
+package org.usfirst.frc.team3331.robot.commands;
+
+import org.usfirst.frc.team3331.robot.Robot;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class UpperArmDownCommand extends Command {
+	boolean position = false;
+	
+    public UpperArmDownCommand() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.armSubsystem);
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    	double angle = Robot.armSubsystem.getArmAngle();
+    	Robot.armSubsystem.setTopPiston(position);
+    	if (angle < -0.125) Robot.armSubsystem.setTopPiston(true);
+    	else if (angle > 0.125) Robot.armSubsystem.setTopPiston(false);
+    	else Robot.armSubsystem.lockTopPiston();
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+        //return (Robot.armSubsystem.getTopPiston() == position);
+    	return (Robot.armSubsystem.getTopPiston() == position);
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+    	Robot.armSubsystem.lockTopPiston();
+    }
+}

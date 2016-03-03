@@ -6,6 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3331.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3331.robot.commands.AutoCommandGroup;
+import org.usfirst.frc.team3331.robot.subsystems.ArmSubsystem;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
+	public static final ArmSubsystem armSubsystem = new ArmSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -29,7 +33,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	RobotMap.init();
 		oi = new OI();
+		driveSubsystem.init();
+		armSubsystem.init();
+		
         chooser = new SendableChooser();
 //        chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
@@ -59,8 +67,8 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
-        
+        //autonomousCommand = (Command) chooser.getSelected();
+        autonomousCommand = new AutoCommandGroup();
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":
@@ -96,6 +104,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        System.out.println(armSubsystem.getArmAngle());
     }
     
     /**

@@ -1,7 +1,11 @@
 package org.usfirst.frc.team3331.robot;
 
+import org.usfirst.frc.team3331.robot.commands.*;
+import org.usfirst.frc.team3331.robot.triggers.ArmDownButton;
+import org.usfirst.frc.team3331.robot.triggers.ArmUpButton;
+
 import edu.wpi.first.wpilibj.buttons.Button;
-import org.usfirst.frc.team3331.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,5 +38,32 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	
+	Button a = new JoystickButton(RobotMap.gamepad, 1),
+			b = new JoystickButton(RobotMap.gamepad, 2),
+			x = new JoystickButton(RobotMap.gamepad, 3),
+			y = new JoystickButton(RobotMap.gamepad, 4),
+			leftStickButton = new JoystickButton(RobotMap.gamepad, 9),
+			leftTrigger = new JoystickButton(RobotMap.gamepad, 5),
+			rightTrigger = new JoystickButton(RobotMap.gamepad, 6);
+	
+	public OI() {
+		/*
+		a.whenPressed(new UnfoldArmCommandGroup());
+		b.whenPressed(new FoldArmCommandGroup());
+		x.whenPressed(new HookPistonToggleCommand());
+		y.whileHeld(new ManualArmFoldCommand());
+		leftStickButton.whenPressed(new ManualArmCalibrationCommand());
+		leftTrigger.whileHeld(new UpperArmDownCommand());
+		rightTrigger.whileHeld(new UpperArmUpCommand());
+		*/
+		
+		a.whileHeld(new LowerArmUpCommand());
+		b.whileHeld(new LowerArmDownCommand());
+		x.whileHeld(new UpperArmUpCommand());
+		y.whileHeld(new UpperArmDownCommand());
+		leftTrigger.whenPressed(new HookPistonOutCommand());
+		rightTrigger.whenPressed(new HookPistonInCommand());
+	}
 }
 

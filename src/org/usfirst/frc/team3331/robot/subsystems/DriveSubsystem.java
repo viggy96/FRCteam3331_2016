@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3331.robot.subsystems;
 
 import org.usfirst.frc.team3331.robot.RobotMap;
-import org.usfirst.frc.team3331.robot.commands.teleopDriveCommand;
+import org.usfirst.frc.team3331.robot.commands.TeleopDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,23 +15,35 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
-       setDefaultCommand(new teleopDriveCommand());
+       setDefaultCommand(new TeleopDriveCommand());
     }
     
     public void init() {
-    	RobotMap.drivetrain.setLeftRightMotorOutputs(0, 0);
     	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
     	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+    	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+    	RobotMap.drivetrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+    	RobotMap.drivetrain.setLeftRightMotorOutputs(0, 0);
+    }
+    
+    public void stopDrive() {
+    	RobotMap.drivetrain.tankDrive(0, 0);
     }
     
     public void teleopDrive() {
-    	double axes[] = normaliseAxes();
-    	RobotMap.drivetrain.tankDrive(axes[0], axes[1]);
+    	//double axes[] = normaliseAxes();
+    	RobotMap.drivetrain.tankDrive(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), RobotMap.gamepad.getRawAxis(RobotMap.rightStickY));
+    }
+    
+    public void autoDrive(double leftValue, double rightValue) {
+    	RobotMap.drivetrain.tankDrive(leftValue, rightValue);
     }
     
     private double[] normaliseAxes() {
-    	double left = Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), NORMALISE_POW);
-    	double right = Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.rightStickY), NORMALISE_POW);
+    	double left = Math.copySign(Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.leftStickY), NORMALISE_POW),
+    			RobotMap.gamepad.getRawAxis(RobotMap.leftStickY));
+    	double right = Math.copySign(Math.pow(RobotMap.gamepad.getRawAxis(RobotMap.rightStickY), NORMALISE_POW),
+    			RobotMap.gamepad.getRawAxis(RobotMap.rightStickY));
     	
     	double output[] = {left, right};
     	return output;
