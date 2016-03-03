@@ -23,7 +23,7 @@ public class RobotMap {
     public static final RobotDrive drivetrain = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
     
     public static final Joystick gamepad = new Joystick(0);
-    public static final int leftStickX = 0;
+    public static final int leftStickX = 0; 
     public static final int leftStickY = 1;
     public static final int rightStickX = 4;
     public static final int rightStickY = 5;
