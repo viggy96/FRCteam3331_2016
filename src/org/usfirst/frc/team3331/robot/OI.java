@@ -44,8 +44,8 @@ public class OI {
 			x = new JoystickButton(RobotMap.gamepad, 3),
 			y = new JoystickButton(RobotMap.gamepad, 4),
 			leftStickButton = new JoystickButton(RobotMap.gamepad, 9),
-			leftTrigger = new ArmDownButton(),
-			rightTrigger = new ArmUpButton();
+			leftTrigger = new JoystickButton(RobotMap.gamepad, 5),
+			rightTrigger = new JoystickButton(RobotMap.gamepad, 6);
 	
 	public OI() {
 		/*
@@ -59,11 +59,11 @@ public class OI {
 		*/
 		
 		a.whileHeld(new LowerArmUpCommand());
-		b.whileHeld(new UpperArmUpCommand());;
-		x.whileHeld(new LowerArmDownCommand());
-		y.whileHeld(new UpperArmUpCommand());;
-		
-		leftStickButton.whenPressed(new HookPistonToggleCommand());;
+		b.whileHeld(new LowerArmDownCommand());
+		x.whileHeld(new UpperArmUpCommand());
+		y.whileHeld(new UpperArmDownCommand());
+		leftTrigger.whenPressed(new HookPistonOutCommand());
+		rightTrigger.whenPressed(new HookPistonInCommand());
 	}
 }
 

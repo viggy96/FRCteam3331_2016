@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LowerArmUpCommand extends Command {
-	boolean position = true;
+public class HookPistonInCommand extends Command {
+	DoubleSolenoid.Value position = DoubleSolenoid.Value.kReverse;
 	
-    public LowerArmUpCommand() {
+    public HookPistonInCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSubsystem);
@@ -23,23 +23,20 @@ public class LowerArmUpCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.armSubsystem.setBottomPiston(position);
+    	Robot.armSubsystem.setHookPiston(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //return Robot.armSubsystem.isLowerArmUp();
-    	return Robot.armSubsystem.getBottomPiston() == position;
+        return Robot.armSubsystem.getHookPiston() == position;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.armSubsystem.lockBottomPiston();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.armSubsystem.lockBottomPiston();
     }
 }

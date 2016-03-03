@@ -23,7 +23,11 @@ public class UpperArmDownCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double angle = Robot.armSubsystem.getArmAngle();
     	Robot.armSubsystem.setTopPiston(position);
+    	if (angle < -0.125) Robot.armSubsystem.setTopPiston(true);
+    	else if (angle > 0.125) Robot.armSubsystem.setTopPiston(false);
+    	else Robot.armSubsystem.lockTopPiston();
     }
 
     // Make this return true when this Command no longer needs to run execute()

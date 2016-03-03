@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ManualArmCalibrationCommand extends Command {
-	final double EPSILON = 0.001;
+	final double EPSILON = 0.01;
 
     public ManualArmCalibrationCommand() {
         // Use requires() here to declare subsystem dependencies

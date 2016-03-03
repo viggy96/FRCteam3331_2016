@@ -29,7 +29,7 @@ public class HookPistonToggleCommand extends Command {
     		Robot.armSubsystem.setHookPiston(position);
     	}
     	else {
-    		position = DoubleSolenoid.Value.kReverse;
+    		position = DoubleSolenoid.Value.kForward;
     		Robot.armSubsystem.setHookPiston(position);
     	}
     }

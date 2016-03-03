@@ -81,6 +81,7 @@ public class ArmSubsystem extends Subsystem {
     
     public void calibrateArm() {
     	RobotMap.gyro.calibrate();
+    	System.out.print(RobotMap.gyro.getAngle());
     }
     
     public double getArmAngle() {

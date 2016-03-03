@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ArmCalibrationCommand extends Command {
 	boolean position = false;
+	final double EPSILON = 0.01;
 	
     public ArmCalibrationCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -28,7 +29,7 @@ public class ArmCalibrationCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.armSubsystem.isLowerArmDown();
+        return (Robot.armSubsystem.isLowerArmDown() && Math.abs(Robot.armSubsystem.getArmAngle()) < EPSILON);
     }
 
     // Called once after isFinished returns true
