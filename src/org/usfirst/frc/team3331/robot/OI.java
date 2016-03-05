@@ -60,10 +60,10 @@ public class OI {
 		
 		a.whileHeld(new LowerArmUpCommand());
 		b.whileHeld(new LowerArmDownCommand());
-		x.whileHeld(new UpperArmUpCommand());
-		y.whileHeld(new UpperArmDownCommand());
-		leftTrigger.whenPressed(new HookPistonOutCommand());
-		rightTrigger.whenPressed(new HookPistonInCommand());
+		x.whileHeld(new UpperArmDownCommand());
+		y.whileHeld(new UpperArmUpCommand());
+		leftTrigger.whenPressed(new HookPistonInCommand());
+		rightTrigger.whenPressed(new HookPistonOutCommand());
 	}
 }
 

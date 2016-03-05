@@ -17,12 +17,12 @@ public class AutoDriveForwardCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(1.0);
+    	setTimeout(10.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSubsystem.autoDrive(0.9, 0.9);
+    	Robot.driveSubsystem.autoDrive(1.0, 1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

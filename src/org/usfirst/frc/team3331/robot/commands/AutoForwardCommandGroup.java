@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoCommandGroup extends CommandGroup {
+public class AutoForwardCommandGroup extends CommandGroup {
     
-    public  AutoCommandGroup() {
+    public  AutoForwardCommandGroup() {
         addSequential(new ArmCalibrationCommand());
         addSequential(new AutoDriveForwardCommand());
     }

@@ -24,8 +24,10 @@ public class UpperArmUpCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (DriverStation.getInstance().getMatchTime() <= 130 && Robot.armSubsystem.getArmAngle() >= 45) 
+    	if (DriverStation.getInstance().getMatchTime() <= 130 && Robot.armSubsystem.getArmAngle() >= 45) {
     		upperLimit = true;
+    		System.out.println("UPPER LIMIT REACHED");
+    	}
     	else Robot.armSubsystem.setTopPiston(position);
     }
 
