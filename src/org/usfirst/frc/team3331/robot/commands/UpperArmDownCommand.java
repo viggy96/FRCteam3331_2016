@@ -24,10 +24,12 @@ public class UpperArmDownCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.armSubsystem.setTopPiston(position);
+    	System.out.println("UpperArmDown");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	System.out.println("UpperArmDown Done");
     	return (Robot.armSubsystem.getTopPiston() == position);
     }
 

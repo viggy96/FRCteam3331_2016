@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoReverseCommandGroup extends CommandGroup {
     
     public  AutoReverseCommandGroup() {
-        addSequential(new ArmCalibrationCommand());
+        // addSequential(new ArmCalibrationCommand());
         addSequential(new AutoDriveReverseCommand());
     }
 }

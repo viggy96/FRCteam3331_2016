@@ -40,8 +40,9 @@ public class Robot extends IterativeRobot {
 		armSubsystem.init();
 		
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutoForwardCommandGroup());
-        chooser.addObject("My Auto", new AutoReverseCommandGroup());
+        chooser.addDefault("Auto Forward", new AutoForwardCommandGroup());
+        chooser.addObject("Auto Reverse", new AutoReverseCommandGroup());
+        chooser.addObject("Do Nothing", null);
         SmartDashboard.putData("Auto mode", chooser);
     }
 	
@@ -68,19 +69,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        //autonomousCommand = (Command) chooser.getSelected();
-        autonomousCommand = new AutoForwardCommandGroup();
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
-    	
+        autonomousCommand = (Command) chooser.getSelected();
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
@@ -105,7 +94,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println(armSubsystem.getArmAngle());
+        // System.out.println(armSubsystem.getArmAngle());
     }
     
     /**

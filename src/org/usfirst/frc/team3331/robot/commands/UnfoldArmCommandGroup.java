@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class UnfoldArmCommandGroup extends CommandGroup {
     
     public  UnfoldArmCommandGroup() {
-        addParallel(new LowerArmUpCommand());
-        addParallel(new UpperArmLevelCommand(ArmSubsystem.Action.UNFOLD));
+        // addParallel(new LowerArmUpCommand());
+        // addParallel(new UpperArmLevelCommand(ArmSubsystem.Action.UNFOLD));
     }
 }

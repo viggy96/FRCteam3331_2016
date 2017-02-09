@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3331.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
@@ -28,8 +29,8 @@ public class RobotMap {
     public static final int rightStickX = 4;
     public static final int rightStickY = 5;
     
-    public static final Solenoid bottomPistonForward = new Solenoid(0);
-    public static final Solenoid bottomPistonReverse = new Solenoid(1);
+    public static final Solenoid bottomPistonForward = new Solenoid(6);
+    public static final Solenoid bottomPistonReverse = new Solenoid(7);
     public static final Solenoid topPistonForward = new Solenoid(2);
     public static final Solenoid topPistonReverse = new Solenoid(3);
     
@@ -46,10 +47,16 @@ public class RobotMap {
     public static boolean armFoldState = false;
     public static boolean hookState = false;
     
+    //public static CameraServer camera;
+    
     public static void init() {
     	frontLeftMotor.enableDeadbandElimination(true);
     	frontRightMotor.enableDeadbandElimination(true);
     	rearLeftMotor.enableDeadbandElimination(true);
     	rearRightMotor.enableDeadbandElimination(true);
+    	
+    	//camera = CameraServer.getInstance();
+    	//camera.setQuality(50);
+    	//camera.startAutomaticCapture("cam2");
     }
 }
